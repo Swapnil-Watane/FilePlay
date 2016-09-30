@@ -1,0 +1,27 @@
+<% if !@upfile.errors.empty? %>
+   <div class = "alert alert-error">
+      <ul>
+         <% @upfile.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+
+<br />
+
+<%= link_to "Home", upfiles_path, class: "btn btn-primary" %>
+
+<br />
+<p>
+
+<div class = "well">
+   <%= form_for @upfile, html: { multipart: true } do |f| %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :attachment %><br>
+      <%= f.file_field :attachment %><br>
+      <%= f.submit "Upload", class: "btn btn-primary" %><br>
+   <% end %>
+</div>
+</p>

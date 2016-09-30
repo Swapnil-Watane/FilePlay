@@ -1,0 +1,33 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+<%= link_to "Home", upfiles_path, class: "btn btn-primary" %>
+<br />
+<p>
+<table class="table table-bordered table-striped">
+	<tbody>      
+         <tr>
+            <td><b>Name:</b></td>
+            <td><%= @upfile.name %></td>           
+         </tr>      
+         <tr>
+            <td><b>Location:</b></td>
+            <td><%= @upfile.attachment %></td>           
+         </tr>      
+         <tr>
+            <td><b>Content:</b></td>
+            <td>
+            	<%if @upfile.attachment.read == nil %>
+            		The file content are not in plane text!
+            	<%else %>
+            		<%= @upfile.attachment.read %>
+            	<%end%>
+            </td>           
+         </tr>      
+   </tbody>
+   </table>
+ 
