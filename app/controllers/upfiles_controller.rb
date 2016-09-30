@@ -26,7 +26,10 @@ class UpfilesController < ApplicationController
 
   def show
     @upfile = Upfile.find(params[:id]) 
+    #byebug
     @upfile.attachment.read
+    pdf_filename = @upfile.attachment.path 
+    send_file(pdf_filename, :filename =>  @upfile.attachment.file.filename, :disposition => 'inline', :type => @upfile.attachment.content_type)
   end
 
   private
